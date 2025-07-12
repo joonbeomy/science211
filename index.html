@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>지구의 역사(환경과 생물의 변화)</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인터랙티브 지질 시대 탐험</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <header class="text-center py-8 bg-white shadow-md">
+        <h1 class="text-4xl md:text-5xl font-bold text-purple-600">인터랙티브 지질 시대 탐험</h1>
+        <p class="mt-2 text-lg text-stone-600">지구의 역사를 클릭하고 스크롤하며 여행해 보세요.</p>
+    </header>
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div id="nav-container" class="container mx-auto px-4 py-3 flex flex-wrap justify-center items-center gap-2">
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 md:p-8">
+        <section id="intro" class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4 text-purple-700">지구의 46억 년 이야기</h2>
+            <p class="max-w-3xl mx-auto text-stone-700 leading-relaxed">
+                이곳은 고등학교 과학 수업 '지질 시대의 환경과 생물의 변화'를 바탕으로 만든 인터랙티브 학습 공간입니다. 지질 시대는 지구의 탄생부터 현재까지의 기나긴 역사를 담고 있습니다. 각 시대를 클릭하여 당시의 환경은 어땠는지, 어떤 생물들이 살았는지, 그리고 어떤 거대한 사건들이 지구의 운명을 바꾸었는지 알아보세요.
+            </p>
+            <div class="chart-container mt-8 h-48 md:h-64">
+                <canvas id="eraLengthChart"></canvas>
+            </div>
+            <p class="mt-2 text-sm text-stone-500">위 차트는 각 지질 시대의 상대적인 길이를 보여줍니다. 선캄브리아 시대가 얼마나 길었는지 확인해보세요!</p>
+        </section>
+
+        <section id="precambrian" class="content-section mb-16 p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4 border-b-4 border-purple-300 pb-2">1. 선캄브리아 시대 <span class="text-xl font-normal text-stone-500">(약 46억 년 전 ~ 5.41억 년 전)</span></h2>
+            <p class="mb-8 text-stone-700 leading-relaxed">
+                지구 역사의 약 88%를 차지하는 가장 긴 시대입니다. 초기 지구는 매우 뜨거운 마그마 바다였지만, 점차 식으면서 원시 바다와 대기가 형성되었습니다. 이 시기에는 최초의 생명체가 등장하고, 광합성을 하는 생물이 출현하여 대기 중 산소 농도를 높이는 등 지구 환경에 엄청난 변화가 일어났습니다.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card bg-sky-50">
+                    <h3 class="text-xl font-bold mb-2 text-sky-800">핵심 환경 변화 🌍</h3>
+                    <ul class="list-disc list-inside space-y-2 text-stone-700">
+                        <li><strong>원시 대기와 바다 형성:</strong> 화산 활동으로 수증기와 이산화탄소가 방출되어 초기 대기와 바다가 만들어졌습니다.</li>
+                        <li><strong>산소의 축적:</strong> 시아노박테리아(남세균)가 출현하여 광합성을 시작했고, 대기 중에 산소가 쌓이기 시작했습니다.</li>
+                        <li><strong>오존층의 기틀 마련:</strong> 대기 중 산소가 자외선과 반응하여 오존층이 형성될 기반이 닦였습니다.</li>
+                    </ul>
+                </div>
+                <div class="card bg-emerald-50">
+                    <h3 class="text-xl font-bold mb-2 text-emerald-800">주요 생물 🦠</h3>
+                    <ul class="list-disc list-inside space-y-2 text-stone-700">
+                        <li><strong>최초의 생명체 등장:</strong> 약 38억 년 전, 바다에서 단세포 원핵생물이 출현했습니다.</li>
+                        <li><strong>시아노박테리아:</strong> 최초로 광합성을 하여 산소를 만들어낸 생물입니다. 이들의 활동 흔적이 스트로마톨라이트 화석으로 남아있습니다.</li>
+                        <li><strong>다세포 생물 출현:</strong> 시대 후기에 이르러 단세포 생물들이 모여 최초의 다세포 생물이 등장했습니다. (에디아카라 동물군)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="paleozoic" class="content-section mb-16 p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4 border-b-4 border-blue-300 pb-2">2. 고생대 <span class="text-xl font-normal text-stone-500">(약 5.41억 년 전 ~ 2.52억 년 전)</span></h2>
+            <p class="mb-8 text-stone-700 leading-relaxed">
+                '오래된 생물의 시대'라는 뜻으로, 생물 종이 폭발적으로 증가한 시기입니다. 초기에는 다양한 해양 무척추동물이 번성했고, 중기에는 어류가, 후기에는 식물이 육상으로 진출하고 양서류와 파충류가 등장했습니다. 시대 말기에는 지구 역사상 가장 큰 대멸종 사건이 있었습니다.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card bg-sky-50 lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-2 text-sky-800">핵심 환경 변화 🏞️</h3>
+                    <ul class="list-disc list-inside space-y-2 text-stone-700">
+                        <li><strong>오존층 형성:</strong> 두꺼워진 오존층이 유해한 자외선을 차단하여 생물의 육상 진출이 가능해졌습니다.</li>
+                        <li><strong>대륙의 이동:</strong> 여러 대륙이 하나로 합쳐져 거대한 초월대륙 '판게아'를 형성했습니다.</li>
+                        <li><strong>기후 변화:</strong> 여러 차례의 빙하기와 온난한 시기가 반복되었습니다.</li>
+                    </ul>
+                </div>
+                <div class="card bg-emerald-50 lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-2 text-emerald-800">주요 생물 🐠</h3>
+                    <ul class="list-disc list-inside space-y-2 text-stone-700">
+                        <li><strong>캄브리아기 대폭발:</strong> 시대 초기에 다양한 해양 무척추동물(삼엽충, 완족류 등)이 갑자기 출현했습니다.</li>
+                        <li><strong>어류의 번성:</strong> 턱을 가진 어류가 나타나 바다의 지배자가 되었습니다.</li>
+                        <li><strong>최초의 육상 생물:</strong> 식물이 육상으로 진출하고, 뒤이어 양서류와 파충류가 등장했습니다.</li>
+                    </ul>
+                </div>
+                 <div class="card bg-red-50 lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-2 text-red-800">주요 사건: 대멸종 💥</h3>
+                    <p class="text-stone-700">고생대 말, 지구 역사상 최대 규모의 대멸종이 발생했습니다. 해양 생물의 약 96%, 육상 척추동물의 약 70%가 멸종했습니다. 판게아 형성과 관련된 극심한 화산 활동이 주된 원인으로 추정됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mesozoic" class="content-section mb-16 p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4 border-b-4 border-green-300 pb-2">3. 중생대 <span class="text-xl font-normal text-stone-500">(약 2.52억 년 전 ~ 6,600만 년 전)</span></h2>
+            <p class="mb-8 text-stone-700 leading-relaxed">
+                '중간 생물의 시대'로, 파충류의 시대, 특히 '공룡의 시대'로 잘 알려져 있습니다. 고생대 대멸종에서 살아남은 생물들이 새로운 환경에 적응하며 진화했습니다. 육지에는 공룡이, 바다에는 암모나이트가 번성했으며, 하늘에는 익룡이 날아다녔습니다. 최초의 포유류와 조류도 이 시기에 등장했습니다.
+            </p>
+             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card bg-sky-50">
+                    <h3 class="text-xl font-bold mb-2 text-sky-800">핵심 환경 변화 🌋</h3>
+                     <ul class="list-disc list-inside space-y-2 text-stone-700">
+                        <li><strong>판게아의 분리:</strong> 거대륙 판게아가 점차 분리되면서 대서양과 인도양이 형성되기 시작했습니다.</li>
+                        <li><strong>온난한 기후:</strong> 대체로 온난하고 습윤한 기후가 지속되어 빙하가 거의 없었습니다.</li>
+                    </ul>
+                </div>
+                <div class="card bg-emerald-50">
+                    <h3 class="text-xl font-bold mb-2 text-emerald-800">주요 생물 🦕</h3>
+                     <ul class="list-disc list-inside space-y-2 text-stone-700">
+                        <li><strong>파충류의 전성기:</strong> 공룡, 익룡, 어룡 등 다양한 파충류가 육해공을 지배했습니다.</li>
+                        <li><strong>암모나이트와 속씨식물:</strong> 바다에서는 암모나이트가, 육지에서는 겉씨식물(소철, 은행나무 등)이 번성했으며 후기에는 속씨식물이 등장했습니다.</li>
+                        <li><strong>최초의 포유류와 조류:</strong> 크기는 작았지만 최초의 포유류가 등장했고, 시조새와 같은 원시 조류도 출현했습니다.</li>
+                    </ul>
+                </div>
+                <div class="card bg-red-50">
+                    <h3 class="text-xl font-bold mb-2 text-red-800">주요 사건: 공룡 대멸종 ☄️</h3>
+                    <p class="text-stone-700">중생대 말, 거대한 소행성 충돌로 인해 공룡을 포함한 지구 생물의 약 75%가 멸종했습니다. 이 사건은 신생대 포유류의 시대를 여는 계기가 되었습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cenozoic" class="content-section mb-16 p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4 border-b-4 border-yellow-300 pb-2">4. 신생대 <span class="text-xl font-normal text-stone-500">(약 6,600만 년 전 ~ 현재)</span></h2>
+            <p class="mb-8 text-stone-700 leading-relaxed">
+                '새로운 생물의 시대'로, 포유류의 시대라고 불립니다. 공룡이 사라진 생태적 지위를 포유류가 차지하며 매우 다양하게 진화했습니다. 여러 차례의 빙하기와 간빙기를 거치며 지구 환경은 계속 변했고, 이 시대의 끝자락에 드디어 인류가 출현했습니다.
+            </p>
+             <div class="grid md:grid-cols-2 gap-6">
+                <div class="card bg-sky-50">
+                    <h3 class="text-xl font-bold mb-2 text-sky-800">핵심 환경 변화 🧊</h3>
+                     <ul class="list-disc list-inside space-y-2 text-stone-700">
+                        <li><strong>대륙의 현재 모습 형성:</strong> 대륙들이 계속 이동하여 현재와 비슷한 위치에 자리 잡았습니다.</li>
+                        <li><strong>빙하기와 간빙기:</strong> 주기적으로 빙하기와 따뜻한 간빙기가 반복되었습니다.</li>
+                     </ul>
+                </div>
+                <div class="card bg-emerald-50">
+                    <h3 class="text-xl font-bold mb-2 text-emerald-800">주요 생물 🦣</h3>
+                     <ul class="list-disc list-inside space-y-2 text-stone-700">
+                        <li><strong>포유류와 조류의 번성:</strong> 공룡이 사라진 자리를 포유류와 조류가 차지하며 급격히 번성했습니다. 매머드, 검치호랑이 등이 대표적입니다.</li>
+                        <li><strong>속씨식물의 번성:</strong> 오늘날 우리가 보는 대부분의 식물인 속씨식물이 크게 번성했습니다.</li>
+                        <li><strong>인류의 출현:</strong> 약 700만 년 전 아프리카에서 최초의 인류가 출현하여 진화해왔습니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="present" class="content-section mb-16 p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4 border-b-4 border-fuchsia-300 pb-2">5. 과거와 현재, 그리고 미래</h2>
+            <p class="mb-8 text-stone-700 leading-relaxed">
+                지질 시대의 역사는 단지 과거의 이야기가 아닙니다. 우리가 사용하는 화석 연료는 과거 생물들의 유산이며, 현재의 기후 변화는 과거의 대멸종 사건들과 비교되기도 합니다. 지구의 역사를 통해 우리는 현재를 이해하고 미래를 준비하는 지혜를 얻을 수 있습니다.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-fuchsia-800">생물 다양성과 대멸종</h3>
+                    <div class="chart-container h-64 md:h-80">
+                        <canvas id="extinctionChart"></canvas>
+                    </div>
+                    <p class="mt-2 text-sm text-stone-600">위 그래프는 지질 시대 동안 생물 다양성의 변화를 개념적으로 보여줍니다. 다섯 번의 대멸종 사건으로 생물 다양성이 급감했지만, 이후 새로운 종들이 번성하는 기회가 되기도 했습니다.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-fuchsia-800">인류세(Anthropocene)란?</h3>
+                    <p class="mb-4 text-stone-700">일부 과학자들은 인류의 활동이 지구 환경에 너무나 큰 영향을 미치고 있어, 신생대 이후의 새로운 지질 시대인 '인류세'가 시작되었다고 주장합니다. 아래 단계를 클릭해보세요.</p>
+                    <div id="anthropocene-flow" class="space-y-2">
+                        <div class="flow-step p-4 border-2 border-fuchsia-200 rounded-lg cursor-pointer transition hover:bg-fuchsia-50">
+                            <h4 class="font-bold">1단계: 화석 연료 사용 🏭</h4>
+                            <p class="flow-text hidden mt-2 text-sm text-stone-600">고생대, 중생대의 생물 유해가 땅속에 묻혀 만들어진 석탄, 석유를 산업혁명 이후 인류가 대량으로 사용하기 시작했습니다.</p>
+                        </div>
+                        <div class="text-center text-2xl text-fuchsia-400">▼</div>
+                        <div class="flow-step p-4 border-2 border-fuchsia-200 rounded-lg cursor-pointer transition hover:bg-fuchsia-50">
+                            <h4 class="font-bold">2단계: 지구 온난화 🌡️</h4>
+                            <p class="flow-text hidden mt-2 text-sm text-stone-600">화석 연료 사용으로 대기 중 이산화탄소 농도가 급격히 증가하여 지구의 평균 기온이 상승하고 있습니다. 이는 과거의 자연적인 기후 변화보다 훨씬 빠른 속도입니다.</p>
+                        </div>
+                        <div class="text-center text-2xl text-fuchsia-400">▼</div>
+                        <div class="flow-step p-4 border-2 border-fuchsia-200 rounded-lg cursor-pointer transition hover:bg-fuchsia-50">
+                            <h4 class="font-bold">3단계: 생태계 변화와 6차 대멸종? 📉</h4>
+                            <p class="flow-text hidden mt-2 text-sm text-stone-600">급격한 기후 변화와 환경 오염으로 인해 많은 생물들이 멸종 위기에 처해 있으며, 일부 과학자들은 현재를 '6차 대멸종' 시기로 부릅니다. 이는 미래 지층에 뚜렷한 흔적을 남길 것입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-6 bg-stone-800 text-stone-300">
+        <p>본 페이지는 '고등학교 과학 수업 지도안'을 기반으로 제작된 교육용 콘텐츠입니다.</p>
+        <p class="text-sm mt-1">© 2025 Interactive Geological Era Explorer.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
